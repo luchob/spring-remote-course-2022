@@ -15,6 +15,11 @@
   <br/>
   <br/>
 
+  <form th:action="@{/cats}" th:method="DELETE">
+    <input type="hidden" name="cat_id" th:value="${cat.id}">
+    <input type="submit" value="Delete">
+  </form>
+
   <a th:href="@{/cats}">List all</a>
 
 </body>
