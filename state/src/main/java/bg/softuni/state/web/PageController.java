@@ -3,6 +3,8 @@ package bg.softuni.state.web;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -18,6 +20,15 @@ public class PageController {
     resp.addCookie(cookie);
 
     return "page1";
+  }
+
+  @GetMapping("/page1/cookie")
+  public String page1cookie(Model model,
+      @CookieValue(name="page1cookie", defaultValue = "Unknown") String cookieValue) {
+
+    model.addAttribute("page1cookie", cookieValue);
+
+    return "page1cookie";
   }
 
   @GetMapping("/page2")
