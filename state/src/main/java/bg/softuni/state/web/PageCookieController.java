@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class PageController {
+public class PageCookieController {
 
   @GetMapping("/page1")
   public String page1(HttpServletResponse resp) {
