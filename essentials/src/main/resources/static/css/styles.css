@@ -22,3 +22,7 @@ main {
 footer {
   height: 25px;
 }
+
+.car {
+  border: 2px solid black;
+}

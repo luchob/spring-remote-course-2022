@@ -2,15 +2,21 @@ package bg.softuni.essentials.model;
 
 public class CarDTO {
 
+  private final long id;
   private final String make, model;
   private final EngineEnum engine;
   private final boolean insured;
 
-  public CarDTO(String make, String model, EngineEnum engine, boolean insured) {
+  public CarDTO(long id, String make, String model, EngineEnum engine, boolean insured) {
+    this.id = id;
     this.make = make;
     this.model = model;
     this.engine = engine;
     this.insured = insured;
+  }
+
+  public long getId() {
+    return id;
   }
 
   public String getMake() {
@@ -32,7 +38,8 @@ public class CarDTO {
   @Override
   public String toString() {
     return "CarDTO{" +
-        "make='" + make + '\'' +
+        "id=" + id +
+        ", make='" + make + '\'' +
         ", model='" + model + '\'' +
         ", engine=" + engine +
         ", insured=" + insured +
