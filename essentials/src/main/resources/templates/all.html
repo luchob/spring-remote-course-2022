@@ -9,8 +9,8 @@
   <title>Document</title>
 </head>
 <body>
-  <header>Spring Autoshop</header>
+  <header th:replace="fragments/header::header">Some header</header>
   <main>All cars to be shown here</main>
-  <footer>All rights reserved 2022</footer>
+  <footer th:include="fragments/footer::footer">Some footer</footer>
 </body>
 </html>
