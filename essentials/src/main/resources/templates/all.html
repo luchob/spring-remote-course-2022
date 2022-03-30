@@ -13,17 +13,8 @@
   <main>
 
     <div class="car" th:each="c : ${cars}" th:object="${c}">
-      <div th:text="*{make}">Make</div>
-      <div th:text="*{model}">Model</div>
 
-      <div th:switch="*{engine}">
-        <p th:case="${T(bg.softuni.essentials.model.EngineEnum).DIESEL}">Diesel</p>
-        <p th:case="${T(bg.softuni.essentials.model.EngineEnum).GASOLINE}">Gasoline</p>
-        <p th:case="${T(bg.softuni.essentials.model.EngineEnum).ELECTRIC}">Electric</p>
-      </div>
-
-      <div th:if="*{insured}">Insured</div>
-      <div th:unless="*{insured}">Not insured</div>
+      <div th:replace="fragments/cardetails::cardetails(car=${c})"></div>
 
       <div>
         <a th:href="@{/cars/details(id=*{id})}">Details</a>

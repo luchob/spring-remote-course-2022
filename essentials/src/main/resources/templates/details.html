@@ -10,7 +10,13 @@
 </head>
 <body>
 <header th:replace="fragments/header::header">Some header</header>
-<main>car details to be shown here</main>
+<main>
+
+  <div class="car">
+    <div th:replace="fragments/cardetails::cardetails(car=${car})"></div>
+  </div>
+
+</main>
 <footer th:include="fragments/footer::footer">Some footer</footer>
 
 </body>

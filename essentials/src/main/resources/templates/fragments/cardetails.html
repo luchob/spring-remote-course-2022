@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div th:fragment="cardetails(car)">
+
+  <div th:object="${car}">
+    <div th:text="*{make}">Make</div>
+    <div th:text="*{model}">Model</div>
+
+    <div th:switch="*{engine}">
+      <p th:case="${T(bg.softuni.essentials.model.EngineEnum).DIESEL}">Diesel</p>
+      <p th:case="${T(bg.softuni.essentials.model.EngineEnum).GASOLINE}">Gasoline</p>
+      <p th:case="${T(bg.softuni.essentials.model.EngineEnum).ELECTRIC}">Electric</p>
+    </div>
+
+    <div th:if="*{insured}">Insured</div>
+    <div th:unless="*{insured}">Not insured</div>
+
+  </div>
+
+</div>
+</body>
+</html>
