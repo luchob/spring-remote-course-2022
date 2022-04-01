@@ -9,5 +9,6 @@ This repository contains all examples that we have made together in our Srping c
 
 [state](https://github.com/luchob/spring-remote-course-2022/tree/master/state) - texamples from the Spring state management lecture - we experimented with sessions.
 
-
 [thymeleaf-pure](https://github.com/luchob/spring-remote-course-2022/tree/master/thymeleaf-pure) - a demonstration of how the Thymeleaf engine works outside of the spring context.
+
+[essentials](https://github.com/luchob/spring-remote-course-2022/tree/master/essentials) - examples from the Spring Essentials lecture - primarily concentrated on Thymeleaf - conditionals, switches, fragments, etc.
