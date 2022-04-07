@@ -40,8 +40,9 @@ public class StudentController {
       LOGGER.info("Student received: {}", studentModel);
 
       rAtt.addFlashAttribute("studentModel", studentModel);
-      rAtt.addFlashAttribute("org.springframework.validation.BindingResult.studentModel", studentModel);
-      return "redirect:/student-add/add";
+      rAtt.addFlashAttribute("org.springframework.validation.BindingResult.studentModel",
+          bindingResult);
+      return "redirect:/students/add";
     }
 
 
