@@ -7,22 +7,25 @@
 
 <div class="container">
   <h2 class="text-center text-white">Add Student</h2>
-  <form th:action="@{/students/add}" class="main-form mx-auto col-md-8">
+  <form th:action="@{/students/add}"
+        th:method="post"
+        th:object="${studentModel}"
+        class="main-form mx-auto col-md-8">
 
-<!--    <div class="form-group">-->
-<!--      <label class="text-white font-weight-bold" for="name">Name</label>-->
-<!--      <input-->
-<!--          th:field="*{name}"-->
-<!--          th:errorclass="is-invalid"-->
-<!--          name="name"-->
-<!--          id="name"-->
-<!--          type="text"-->
-<!--          class="form-control"-->
-<!--          placeholder="Name"/>-->
-<!--      <p class="errors alert alert-danger invalid-feedback">-->
-<!--        Name is required.-->
-<!--      </p>-->
-<!--    </div>-->
+    <div class="form-group">
+      <label class="text-white font-weight-bold" for="name">Name</label>
+      <input
+          th:field="*{name}"
+          th:errorclass="is-invalid"
+          name="name"
+          id="name"
+          type="text"
+          class="form-control"
+          placeholder="Name"/>
+      <p class="errors alert alert-danger invalid-feedback">
+        Name is required.
+      </p>
+    </div>
 
 
 
