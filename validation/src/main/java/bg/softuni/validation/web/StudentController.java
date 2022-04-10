@@ -1,6 +1,6 @@
 package bg.softuni.validation.web;
 
-import bg.softuni.validation.model.StudentDTO;
+import bg.softuni.validation.model.dto.StudentDTO;
 import bg.softuni.validation.service.StudentService;
 import javax.validation.Valid;
 import org.slf4j.Logger;

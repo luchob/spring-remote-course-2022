@@ -1,5 +1,6 @@
-package bg.softuni.validation.model;
+package bg.softuni.validation.model.dto;
 
+import bg.softuni.validation.model.SexEnum;
 import java.time.LocalDate;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
