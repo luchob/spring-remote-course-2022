@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head::head"></head>
+
+<body>
+
+<div class="container">
+  <h2 class="text-center text-white">Add Student to the motorcycling course</h2>
+  <div th:object="${studentModel}">
+
+    <label class="text-white font-weight-bold" for="name">Name</label>
+    <div
+        th:text="*{name}"
+        id="name"
+        class="text-white">
+      Pesho
+    </div>
+
+    <label class="text-white font-weight-bold" for="name">Birthday</label>
+    <div
+        th:text="*{birthday}"
+        id="birthday"
+        class="text-white">
+      Birthday
+    </div>
+
+    <label class="text-white font-weight-bold" for="email">Email</label>
+    <div
+        th:text="*{email}"
+        id="email"
+        class="text-white">
+      Birthday
+    </div>
+
+    <label class="text-white font-weight-bold" for="sex">Sex</label>
+    <div
+        th:text="*{sex}"
+        id="sex"
+        class="text-white">
+      Sex
+    </div>
+
+  </div>
+</div>
+
+<div>
+  <footer></footer>
+</div>
+
+</body>
+</html>

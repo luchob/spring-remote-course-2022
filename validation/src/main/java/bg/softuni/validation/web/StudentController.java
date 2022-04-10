@@ -32,7 +32,7 @@ public class StudentController {
     model.addAttribute("studentModel", new StudentDTO());
   }
 
-  @GetMapping("/detials")
+  @GetMapping("/details")
   public String details(@RequestParam("studentId") Long studentId,
       Model model) {
     model.addAttribute("studentModel",

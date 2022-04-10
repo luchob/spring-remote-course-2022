@@ -1,6 +1,7 @@
 package bg.softuni.validation.model.dto;
 
 import bg.softuni.validation.model.SexEnum;
+import bg.softuni.validation.model.validation.Adult;
 import java.time.LocalDate;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -15,6 +16,7 @@ public class StudentDTO {
   @Size(min=5, max = 50)
   private String name;
 
+  @Adult
   @NotNull
   @DateTimeFormat(iso = ISO.DATE)
   private LocalDate birthday;

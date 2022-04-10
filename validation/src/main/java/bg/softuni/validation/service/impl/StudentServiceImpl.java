@@ -1,6 +1,7 @@
 package bg.softuni.validation.service.impl;
 
 import bg.softuni.validation.model.dto.StudentDTO;
+import bg.softuni.validation.model.entity.StudentEntity;
 import bg.softuni.validation.repository.StudentRepository;
 import bg.softuni.validation.service.StudentService;
 import java.util.Optional;
@@ -21,13 +22,15 @@ public class StudentServiceImpl implements StudentService {
 
   @Override
   public Long createStudent(StudentDTO studentDTO) {
-    // TODO
-    throw new UnsupportedOperationException("Not yet");
+    StudentEntity newStudent = modelMapper.map(studentDTO, StudentEntity.class);
+    newStudent = studentRepository.save(newStudent);
+    return newStudent.getId();
   }
 
   @Override
   public Optional<StudentDTO> findStudentById(Long studentId) {
-    // TODO
-    throw new UnsupportedOperationException("Not yet");
+    return studentRepository.
+        findById(studentId).
+        map(se -> modelMapper.map(se, StudentDTO.class));
   }
 }
