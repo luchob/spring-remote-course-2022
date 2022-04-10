@@ -33,8 +33,11 @@ public class StudentController {
   }
 
   @GetMapping("/detials")
-  public String details(@RequestParam("studentId") String studentId) {
-    //TODO
+  public String details(@RequestParam("studentId") Long studentId,
+      Model model) {
+    model.addAttribute("studentModel",
+        studentService.findStudentById(studentId).
+            orElseThrow());
     return "student-details";
   }
 

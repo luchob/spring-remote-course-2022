@@ -6,7 +6,7 @@
 <body>
 
 <div class="container">
-  <h2 class="text-center text-white">Add Student</h2>
+  <h2 class="text-center text-white">Add Student to the motorcycling course</h2>
   <form th:action="@{/students/add}"
         th:method="post"
         th:object="${studentModel}"
@@ -27,7 +27,35 @@
       </p>
     </div>
 
+    <div class="form-group">
+      <label class="text-white font-weight-bold" for="birthday">Birthday</label>
+      <input
+          th:field="*{birthday}"
+          th:errorclass="is-invalid"
+          name="birthday"
+          id="birthday"
+          type="date"
+          class="form-control"
+          placeholder="Name"/>
+      <p class="errors alert alert-danger invalid-feedback">
+        Valid birthday is expected and the student should be adult.
+      </p>
+    </div>
 
+    <div class="form-group">
+      <label class="text-white font-weight-bold" for="email">Email</label>
+      <input
+          th:field="*{email}"
+          th:errorclass="is-invalid"
+          name="email"
+          id="email"
+          type="text"
+          class="form-control"
+          placeholder="Email"/>
+      <p class="errors alert alert-danger invalid-feedback">
+        Valid email is expected.
+      </p>
+    </div>
 
     <div class="row">
 

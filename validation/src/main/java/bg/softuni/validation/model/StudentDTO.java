@@ -1,16 +1,24 @@
 package bg.softuni.validation.model;
 
 import java.time.LocalDate;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 public class StudentDTO {
 
   @NotNull
   @Size(min=5, max = 50)
   private String name;
+
+  @NotNull
+  @DateTimeFormat(iso = ISO.DATE)
   private LocalDate birthday;
   private SexEnum sex;
+  @NotNull
+  @Email
   private String email;
 
   public String getName() {
