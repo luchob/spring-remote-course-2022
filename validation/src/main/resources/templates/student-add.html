@@ -52,7 +52,8 @@
           type="text"
           class="form-control"
           placeholder="Email"/>
-      <p class="errors alert alert-danger invalid-feedback">
+      <p th:if="${#fields.hasErrors('*{email}')}"
+         class="errors alert alert-danger invalid-feedback">
         Valid email is expected.
       </p>
     </div>
