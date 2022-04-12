@@ -1,4 +1,4 @@
-package bg.softuni.restservice.restservice;
+package bg.softuni.restservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
