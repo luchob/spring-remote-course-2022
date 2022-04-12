@@ -2,10 +2,20 @@ package bg.softuni.restservice.model.dto;
 
 public class BookDTO {
 
+  private Long id;
   private String title;
   private String isbn;
 
   private AuthorDTO author;
+
+  public Long getId() {
+    return id;
+  }
+
+  public BookDTO setId(Long id) {
+    this.id = id;
+    return this;
+  }
 
   public String getTitle() {
     return title;
