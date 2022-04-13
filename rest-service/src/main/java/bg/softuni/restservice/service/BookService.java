@@ -13,4 +13,9 @@ public interface BookService {
 
   Page<BookDTO> getBooks(int pageNo, int pageSize, String sortBy);
 
+  void deleteBookById(long id);
+
+  Optional<Long> updateBook(BookDTO bookToUpdate);
+
+  long createBook(BookDTO bookToCreate);
 }

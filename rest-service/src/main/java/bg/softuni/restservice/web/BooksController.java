@@ -2,6 +2,7 @@ package bg.softuni.restservice.web;
 
 import bg.softuni.restservice.model.dto.BookDTO;
 import bg.softuni.restservice.service.BookService;
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -64,22 +65,39 @@ public class BooksController {
 
   @DeleteMapping("/{id}")
   public ResponseEntity<BookDTO> deleteBookById(@PathVariable("id") long id) {
-    //todo
-    throw new UnsupportedOperationException("Comming soon!");
+    bookService.deleteBookById(id);
+
+    return ResponseEntity.
+        noContent().
+        build();
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<BookDTO> updateBook(@PathVariable("id") long bookId,
       @RequestBody BookDTO bookDTO) {
-    //todo
-    throw new UnsupportedOperationException("Comming soon!");
+
+    bookDTO.setId(bookId);
+
+    Optional<Long> updatedBookId = bookService.updateBook(bookDTO);
+
+    return updatedBookId.isEmpty() ?
+        ResponseEntity.notFound().build() :
+        ResponseEntity.noContent().build();
   }
 
   @PostMapping
   public ResponseEntity<BookDTO> createBook(
       @RequestBody BookDTO bookDTO,
       UriComponentsBuilder uriBuilder) {
-    //todo
-    throw new UnsupportedOperationException("Comming soon!");
+    long bookId = bookService.createBook(bookDTO);
+
+    URI location = uriBuilder.
+        path("/api/books/{id}").
+        buildAndExpand(bookId).
+        toUri();
+
+    return ResponseEntity.
+        created(location).
+        build();
   }
 }
