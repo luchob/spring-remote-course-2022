@@ -16,5 +16,6 @@ public class UserInit implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     userService.initUserRoles();
+    userService.initAdminUser();
   }
 }

@@ -24,3 +24,7 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+
+app:
+  default:
+    admin-password: topsecret
