@@ -27,4 +27,4 @@ spring:
 
 app:
   default:
-    admin-password: topsecret
+    password: topsecret

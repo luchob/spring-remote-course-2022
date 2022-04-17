@@ -4,6 +4,6 @@ public interface UserService {
 
   void initUserRoles();
 
-  void initAdminUser();
+  void initUsers();
 
 }

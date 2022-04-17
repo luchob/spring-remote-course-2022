@@ -19,16 +19,16 @@ public class UserServiceImpl implements UserService {
   private final UserRoleRepository userRoleRepository;
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
-  private final String defaultAdminPassword;
+  private final String defaultPassword;
 
   public UserServiceImpl(UserRoleRepository userRoleRepository,
       UserRepository userRepository,
       PasswordEncoder passwordEncoder,
-      @Value("${app.default.admin-password}") String defaultAdminPassword) {
+      @Value("${app.default.password}") String defaultPassword) {
     this.userRoleRepository = userRoleRepository;
     this.userRepository = userRepository;
     this.passwordEncoder = passwordEncoder;
-    this.defaultAdminPassword = defaultAdminPassword;
+    this.defaultPassword = defaultPassword;
   }
 
   @Override
@@ -44,16 +44,26 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void initAdminUser() {
+  public void initUsers() {
     if (userRepository.count() == 0) {
       UserEntity adminUser = new UserEntity().
           setFirstName("Admin").
           setLastName("Admin").
           setEmail("admin@example.com").
-          setPassword(passwordEncoder.encode(defaultAdminPassword)).
+          setPassword(passwordEncoder.encode(defaultPassword)).
           setRoles(userRoleRepository.findAll());
 
-      userRepository.save(adminUser);
+      UserRoleEntity moderatorRole = userRoleRepository.findByRole(MODERATOR).
+          orElseThrow(() -> new IllegalStateException("Roles are not initialized properly."));
+
+      UserEntity moderatorUser = new UserEntity().
+          setFirstName("Moderator").
+          setLastName("Moderator").
+          setEmail("moderator@example.com").
+          setPassword(passwordEncoder.encode(defaultPassword)).
+          setRoles(List.of(moderatorRole));
+
+      userRepository.saveAll(List.of(adminUser, moderatorUser));
     }
   }
 }
