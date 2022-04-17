@@ -25,6 +25,10 @@ spring:
       filter:
         enabled: true
 
+logging:
+  level:
+    org.springframework.security: DEBUG
+
 app:
   default:
     admin-password: topsecret
