@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
   public UserServiceImpl(UserRoleRepository userRoleRepository,
       UserRepository userRepository,
       PasswordEncoder passwordEncoder,
-      @Value("app.default.admin-password") String defaultAdminPassword) {
+      @Value("${app.default.admin-password}") String defaultAdminPassword) {
     this.userRoleRepository = userRoleRepository;
     this.userRepository = userRepository;
     this.passwordEncoder = passwordEncoder;
