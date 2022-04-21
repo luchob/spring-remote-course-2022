@@ -1,0 +1,8 @@
+package bg.softuni.hateoas.model.service;
+
+import bg.softuni.hateoas.model.dto.StudentDTO;
+import java.util.Optional;
+
+public interface StudentService {
+  Optional<StudentDTO> findStudentById(Long studentId);
+}
