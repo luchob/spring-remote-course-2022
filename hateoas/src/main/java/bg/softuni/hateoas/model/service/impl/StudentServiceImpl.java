@@ -6,6 +6,7 @@ import bg.softuni.hateoas.model.entity.OrderEntity;
 import bg.softuni.hateoas.model.entity.StudentEntity;
 import bg.softuni.hateoas.model.repository.StudentRepository;
 import bg.softuni.hateoas.model.service.StudentService;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,16 @@ public class StudentServiceImpl implements StudentService {
         findById(studentId).
         map(this::mapStudent);
   }
+
+  @Override
+  public List<StudentDTO> findAllStudents() {
+    return studentRepository.
+        findAll().
+        stream().
+        map(this::mapStudent).
+        collect(Collectors.toList());
+  }
+
 
   private StudentDTO mapStudent(StudentEntity studentEntity) {
     StudentDTO result = new StudentDTO();

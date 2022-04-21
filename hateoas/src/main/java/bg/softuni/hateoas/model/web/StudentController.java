@@ -9,6 +9,7 @@ import bg.softuni.hateoas.model.service.StudentService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
@@ -49,7 +50,15 @@ public class StudentController {
   @GetMapping
   public ResponseEntity<CollectionModel<EntityModel<StudentDTO>>>
       getAllStudents() {
-    throw new UnsupportedOperationException("Not yet");
+    var allStudents = studentService.
+        findAllStudents().
+        stream().
+        map(s -> EntityModel.of(s, createStudentLinks(s))).
+        collect(Collectors.toList());
+
+    return ResponseEntity.ok(
+        CollectionModel.of(allStudents)
+    );
   }
 
   @PostMapping("/{id}")
@@ -71,14 +80,18 @@ public class StudentController {
 
     Link self = linkTo(methodOn(StudentController.class).
         getStudentById(studentDTO.getId())).withSelfRel();
+    result.add(self);
 
-    Link update = linkTo(methodOn(StudentController.class).
-        updateStudent(studentDTO.getId(), studentDTO)).withRel("update");
+    if (!studentDTO.isDeleted()) {
+      Link update = linkTo(methodOn(StudentController.class).
+          updateStudent(studentDTO.getId(), studentDTO)).withRel("update");
 
-    Link orders = linkTo(methodOn(StudentController.class).
-        getStudentOrders(studentDTO.getId())).withRel("orders");
+      result.add(update);
 
-    result.addAll(List.of(self, update, orders));
+      Link orders = linkTo(methodOn(StudentController.class).
+          getStudentOrders(studentDTO.getId())).withRel("orders");
+      result.add(orders);
+    }
 
     return result.toArray(new Link[0]);
   }

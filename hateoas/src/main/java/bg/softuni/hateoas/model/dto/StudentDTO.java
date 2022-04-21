@@ -2,7 +2,9 @@ package bg.softuni.hateoas.model.dto;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.hateoas.server.core.Relation;
 
+@Relation(collectionRelation = "students")
 public class StudentDTO {
 
   private Long id;
