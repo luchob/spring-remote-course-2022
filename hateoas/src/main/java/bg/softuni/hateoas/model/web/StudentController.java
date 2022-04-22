@@ -64,12 +64,40 @@ public class StudentController {
   @PostMapping("/{id}")
   public EntityModel<StudentDTO> updateStudent(@PathVariable("id") Long id,
       StudentDTO studentDTO) {
+    // won't implement, not relevant to the demo!
     throw new UnsupportedOperationException("Not yet");
   }
 
   @GetMapping("/{id}/orders")
-  public CollectionModel<EntityModel<OrderDTO>> getStudentOrders(@PathVariable("id") Long studentId) {
-    throw new UnsupportedOperationException("Not yet");
+  public ResponseEntity<CollectionModel<EntityModel<OrderDTO>>> getStudentOrders(@PathVariable("id") Long id) {
+
+    Optional<StudentDTO> studentDTOOpt = studentService.findStudentById(id);
+    if (studentDTOOpt.isEmpty()){
+      return ResponseEntity.
+          notFound().
+          build();
+    }
+
+    var orders = studentDTOOpt.
+        get().
+        getOrders().
+        stream().
+        map(o -> EntityModel.of(o, createOrderLinks(o))).
+        collect(Collectors.toList());
+
+    return ResponseEntity.ok(CollectionModel.of(orders));
+  }
+
+  private Link[] createOrderLinks(OrderDTO orderDTO) {
+    // student
+
+    List<Link> result = new ArrayList<>();
+
+    Link self = linkTo(methodOn(StudentController.class).
+        getStudentById(orderDTO.getStudentId())).withRel("student");
+    result.add(self);
+
+    return result.toArray(new Link[0]);
   }
 
   private Link[] createStudentLinks(StudentDTO studentDTO) {
