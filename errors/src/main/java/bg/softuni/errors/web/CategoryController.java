@@ -18,7 +18,8 @@ public class CategoryController {
     throw new CategoryNotFoundException(id);
   }
 
-  @ExceptionHandler(CategoryNotFoundException.class)
+  // Uncomment if global exception handling (ObjectNotFoundAdvise) is disabled
+  //@ExceptionHandler(CategoryNotFoundException.class)
   public ModelAndView onCategoryNotFound(CategoryNotFoundException ex) {
     ModelAndView modelAndView = new ModelAndView("category-not-found");
     modelAndView.setStatus(HttpStatus.NOT_FOUND);
