@@ -1,0 +1,3 @@
+my:
+  scheduler:
+    cron: "*/5 * * * * *"
