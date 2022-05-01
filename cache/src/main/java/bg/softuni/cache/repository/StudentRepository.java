@@ -4,6 +4,7 @@ import bg.softuni.cache.model.StudentDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -31,6 +32,16 @@ public class StudentRepository {
     LOGGER.info("Fetching a student by name {} in repo...", name);
 
     return allStudents.stream().filter(s -> s.getName().equals(name)).findAny();
+  }
+
+  public void refresh() {
+    List<StudentDTO> newStudents = allStudents.
+        stream().
+        map(s -> new StudentDTO(s.getName(), s.getAge() + 1)).
+        collect(Collectors.toList());
+
+    allStudents.clear();
+    allStudents.addAll(newStudents);
   }
 
 }

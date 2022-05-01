@@ -30,4 +30,12 @@ public class StudentsController {
     return "done";
   }
 
+  @GetMapping("/refresh")
+  public String refresh() {
+    LOGGER.info("refresh endpoint called.");
+    studentService.clearCache();
+    studentService.refresh();
+    return "done";
+  }
+
 }
