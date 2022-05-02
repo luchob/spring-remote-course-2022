@@ -75,4 +75,15 @@ class BooksControllerIT {
         andExpect(jsonPath("$.[1].author.name", is(testAuthor.getName())));
   }
 
+  @Test
+  void testDeleteBookById() throws Exception {
+    this.mockMvc.perform(MockMvcRequestBuilders.
+            delete("/api/books/{id}", testBook2.getId())).
+        andExpect(status().isNoContent());
+
+    this.mockMvc.perform(MockMvcRequestBuilders.get("/api/books")).
+        andExpect(status().isOk()).
+        andExpect(jsonPath("$", hasSize(1)));
+  }
+
 }
