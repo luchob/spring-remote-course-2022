@@ -1,7 +1,9 @@
 package bg.softuni.restservice.web;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -16,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -86,4 +89,24 @@ class BooksControllerIT {
         andExpect(jsonPath("$", hasSize(1)));
   }
 
+  @Test
+  void testCreateBook() throws Exception {
+
+    String testBookTitle = "Kubernetes in Action";
+    String testBookAuthor = "Marko Luksa";
+    String json = "{\"title\":\""+testBookTitle+"\",\"isbn\":\"971-0134685991\",\"author\":{\"name\":\""+testBookAuthor+"\"}}";
+
+    this.mockMvc.perform(MockMvcRequestBuilders.
+            post("/api/books").
+            contentType(MediaType.APPLICATION_JSON).
+            content(json)).
+        andExpect(header().string("Location", containsString("/api/books/"))).
+        andExpect(status().isCreated());
+
+    this.mockMvc.perform(MockMvcRequestBuilders.get("/api/books")).
+        andExpect(status().isOk()).
+        andExpect(jsonPath("$", hasSize(3))).
+        andExpect(jsonPath("$.[2].title", is(testBookTitle))).
+        andExpect(jsonPath("$.[2].author.name", is(testBookAuthor)));
+  }
 }
