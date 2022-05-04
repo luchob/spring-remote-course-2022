@@ -13,10 +13,8 @@ public class Student {
     LOGGER.info("Within saySomething!");
   }
 
-  public String returnSomething() {
-    String res = "Hello, world!";
-    LOGGER.info("Within returnSomething! Return: {}", res);
-    return res;
+  public void boom() {
+    throw new NullPointerException("Something wrong happend!");
   }
 
   public void echo(String whatToEcho) {
