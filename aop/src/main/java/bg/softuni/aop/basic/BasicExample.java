@@ -2,9 +2,14 @@ package bg.softuni.aop.basic;
 
 import bg.softuni.aop.Student;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
+@ConditionalOnProperty(
+    value = "examples.basic.enabled",
+    havingValue = "true"
+)
 public class BasicExample implements CommandLineRunner {
 
   private final Student student;
