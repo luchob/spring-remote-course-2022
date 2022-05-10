@@ -8,3 +8,11 @@ spring:
     hibernate:
       ddl-auto: validate
     open-in-view: false
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      base-path: /admin
+      exposure:
+        include: "*"
