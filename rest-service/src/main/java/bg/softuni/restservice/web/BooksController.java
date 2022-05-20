@@ -2,6 +2,8 @@ package bg.softuni.restservice.web;
 
 import bg.softuni.restservice.model.dto.BookDTO;
 import bg.softuni.restservice.service.BookService;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +53,15 @@ public class BooksController {
     return ResponseEntity.ok(booksPage);
   }
 
+  @Tag(
+      name = "Find book by ID.",
+      description = "Find the book details by the given book ID."
+  )
+  @Parameter(
+      name = "id",
+      description = "The ID of the Book",
+      required = true
+  )
   @GetMapping("/{id}")
   public ResponseEntity<BookDTO> getBookById(@PathVariable("id") long id) {
     Optional<BookDTO> bookDtoOpt = bookService.findBookById(id);
