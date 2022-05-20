@@ -3,6 +3,7 @@ package bg.softuni.restservice.web;
 import bg.softuni.restservice.model.dto.BookDTO;
 import bg.softuni.restservice.service.BookService;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.net.URI;
 import java.util.List;
@@ -62,6 +63,8 @@ public class BooksController {
       description = "The ID of the Book",
       required = true
   )
+  @ApiResponse(responseCode = "404", description = "When the book with the given ID was not found")
+  @ApiResponse(responseCode = "200", description = "When the book with the given ID was found")
   @GetMapping("/{id}")
   public ResponseEntity<BookDTO> getBookById(@PathVariable("id") long id) {
     Optional<BookDTO> bookDtoOpt = bookService.findBookById(id);
