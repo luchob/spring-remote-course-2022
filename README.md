@@ -20,3 +20,14 @@ This repository contains all examples that we have made together in our Srping c
 [rest-client-js](https://github.com/luchob/spring-remote-course-2022/tree/master/rest-client-js) - exercise from the Web Api And Rest Controllers - writing a JavaScript that consumes rest API.
 
 [security](https://github.com/luchob/spring-remote-course-2022/tree/master/security) - spring security - build a small app that has user model, login, registration, logout, different permissions.
+
+[hateoas] (https://github.com/luchob/spring-remote-course-2022/tree/master/hateoas) - HATEOAS (glory of REST)
+
+[aop](https://github.com/luchob/spring-remote-course-2022/tree/master/aop) - AOP - samples from the Aspect Oriented Programing lecture.
+
+[cache](https://github.com/luchob/spring-remote-course-2022/tree/master/cache), 
+[events](https://github.com/luchob/spring-remote-course-2022/tree/master/events), 
+[scheduling](https://github.com/luchob/spring-remote-course-2022/tree/master/events) - All of the topics in the Spring Events - Events, Caching, Scheduling.
+
+
+
