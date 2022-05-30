@@ -21,7 +21,7 @@ This repository contains all examples that we have made together in our Srping c
 
 [security](https://github.com/luchob/spring-remote-course-2022/tree/master/security) - spring security - build a small app that has user model, login, registration, logout, different permissions.
 
-[hateoas] (https://github.com/luchob/spring-remote-course-2022/tree/master/hateoas) - HATEOAS (glory of REST)
+[hateoas](https://github.com/luchob/spring-remote-course-2022/tree/master/hateoas) - HATEOAS (glory of REST)
 
 [aop](https://github.com/luchob/spring-remote-course-2022/tree/master/aop) - AOP - samples from the Aspect Oriented Programing lecture.
 
